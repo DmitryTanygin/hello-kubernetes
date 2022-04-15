@@ -1,6 +1,6 @@
-REGISTRY ?= docker.io
-REPOSITORY ?= paulbouwer
-IMAGE_VERSION ?= $(shell cat src/app/package.json | jq -r .version)
+REGISTRY = $CI_REGISTRY
+REPOSITORY = dmitrytanygin
+IMAGE_VERSION = $(shell cat src/app/package.json | jq -r .version)
 IMAGE_MAJOR_VERSION = $(shell echo "$(IMAGE_VERSION)" | cut -d '.' -f1 )
 IMAGE_MINOR_VERSION = $(shell echo "$(IMAGE_VERSION)" | cut -d '.' -f2 )
 IMAGE = $(REGISTRY)/$(REPOSITORY)/hello-kubernetes
