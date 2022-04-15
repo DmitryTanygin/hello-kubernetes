@@ -1,4 +1,4 @@
-REGISTRY = $CI_REGISTRY
+REGISTRY = $(CI_REGISTRY)
 REPOSITORY = dmitrytanygin
 IMAGE_VERSION = $(shell cat src/app/package.json | jq -r .version)
 IMAGE_MAJOR_VERSION = $(shell echo "$(IMAGE_VERSION)" | cut -d '.' -f1 )
