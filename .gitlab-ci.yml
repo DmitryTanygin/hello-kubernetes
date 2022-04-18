@@ -19,7 +19,7 @@ deploy:
   stage: deploy
   image: dtzar/helm-kubectl
   script:
-    - kubectl config set- cluster k8s --server="${KUBE_URL}"
+    - kubectl config set-cluster k8s --server="${KUBE_URL}"
     - kubectl config set clusters.k8s.certificate-authority-data ${CERTIFICATE_AUTHORITY_DATA}
     - kubectl config set-credentials default --token="${KUBE_TOKEN}"
     - kubectl config set-context default --cluster=k8s --user=default
