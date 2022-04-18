@@ -17,12 +17,12 @@ build:
 
 deploy:
   stage: deploy
-  image: alpine/k8s:1.22.6
+  image: dtzar/helm-kubectl
   script:
-    - kubectl config set clusters.k8s.server ${KUBE_URL}
-    - kubectl config set clusters.my-cluster.certificate-authority-data ${CERTIFICATE_AUTHORITY_DATA}
-    - kubectl config set contexts.default.cluster k8s
-    - kubectl config set users.cluster-admin.client-key-data ${KUBE_TOKEN} --set-raw-bytes=true
+    - kubectl config set- cluster k8s --server="${KUBE_URL}"
+    - kubectl config set clusters.k8s.certificate-authority-data ${CERTIFICATE_AUTHORITY_DATA}
+    - kubectl config set-credentials default --token="${KUBE_TOKEN}"
+    - kubectl config set-context default --cluster=k8s --user=default
     - kubectl config use-context default
     - kubectl cluster-info dump
 #    - helm repo add registry.gitlab.com
