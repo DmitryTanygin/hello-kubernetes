@@ -20,6 +20,7 @@ deploy:
   image: dtzar/helm-kubectl
   script:
     - kubectl config set-cluster k8s --server="$KUBE_URL" --insecure-skip-tls-verify
+    - kubectl config set clusters.k8s.certificate-authority-data ${CERTIFICATE_AUTHORITY_DATA}
     - kubectl config set-credentials gitlab --token="$KUBE_TOKEN"
     - kubectl config set-context default --cluster=k8s --user=gitlab
     - kubectl config use-context default
