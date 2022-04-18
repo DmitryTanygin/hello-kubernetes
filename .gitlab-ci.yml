@@ -24,7 +24,7 @@ deploy:
     - kubectl config set-credentials default --token="${KUBE_TOKEN}"
     - kubectl config set-context default --cluster=k8s --user=default
     - kubectl config use-context default
-    - kubectl cluster-info dump
+#    - kubectl cluster-info dump
 #    - helm repo add registry.gitlab.com
-#    - helm install --create-namespace --namespace hello-kubernetes hello-world ./hello-kubernetes
-#    - kubectl get svc hello-kubernetes-hello-world -n hello-kubernetes -o 'jsonpath={ .status.loadBalancer.ingress[0].ip }'
+    - helm install --create-namespace --namespace hello-kubernetes hello-world ./hello-kubernetes
+    - kubectl get svc hello-kubernetes-hello-world -n hello-kubernetes -o 'jsonpath={ .status.loadBalancer.ingress[0].ip }'
