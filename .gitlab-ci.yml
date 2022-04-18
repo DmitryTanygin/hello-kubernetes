@@ -17,7 +17,7 @@ build:
 
 deploy:
   stage: deploy
-  image: alpine/helm
+  image: alpine/k8s
   script:
     - kubectl config set clusters.k8s.server ${KUBE_URL}
     - kubectl config set clusters.my-cluster.certificate-authority-data ${CERTIFICATE_AUTHORITY_DATA}
