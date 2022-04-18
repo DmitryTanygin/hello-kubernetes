@@ -21,7 +21,7 @@ deploy:
   script:
     - kubectl config set clusters.k8s.server ${KUBE_URL}
     - kubectl config set clusters.my-cluster.certificate-authority-data ${CERTIFICATE_AUTHORITY_DATA}
-    - kubectl config set contexts.k8s.cluster k8s
+    - kubectl config set contexts.default.cluster k8s
     - kubectl config use-context default
     - kubectl cluster-info dump
 #    - helm repo add registry.gitlab.com
