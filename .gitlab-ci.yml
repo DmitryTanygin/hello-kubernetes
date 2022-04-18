@@ -27,5 +27,6 @@ deploy:
     - cd deploy/helm
 #    - kubectl cluster-info dump
 #    - helm repo add registry.gitlab.com
+    - helm uninstall --namespace hello-kubernetes hello-world
     - helm install --create-namespace --namespace hello-kubernetes hello-world ./hello-kubernetes
     - kubectl get svc hello-kubernetes-hello-world -n hello-kubernetes -o 'jsonpath={ .status.loadBalancer.ingress[0].ip }'
